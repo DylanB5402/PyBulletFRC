@@ -1,0 +1,169 @@
+<robot name="onshape">
+<link name="robot_body">
+<visual>
+<origin xyz="0.0185107 -0.0366209 -0.0384443" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://robot_body.stl"/>
+</geometry>
+<material name="robot_body_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0.0185107 -0.0366209 -0.0384443" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://robot_body.stl"/>
+</geometry>
+<material name="robot_body_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0108892 -0.120946 0.0878113" rpy="0 0 0"/>
+<mass value="285.257" />
+<inertia ixx="11.6146" ixy="6.06406e-16"  ixz="3.54521e-16" iyy="11.1779" iyz="-0.0839813" izz="19.7311" />
+</inertial>
+</link>
+
+<link name="wheel">
+<visual>
+<origin xyz="0 3.46945e-18 0" rpy="1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 3.46945e-18 0" rpy="1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.3493e-19 0.00149412 -0.0127" rpy="0 0 0"/>
+<mass value="1.19025" />
+<inertia ixx="0.00179759" ixy="0"  ixz="0" iyy="0.00189058" iyz="0" izz="0.00356019" />
+</inertial>
+</link>
+
+<joint name="wheelRightBack_speed" type="revolute">
+<origin xyz="0.346811 -0.32092 -0.0130443" rpy="-1.5708 -0 -1.5708" />
+<parent link="robot_body" />
+<child link="wheel" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="wheel_2">
+<visual>
+<origin xyz="0 0 -0.0254" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 -0.0254" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.3493e-19 -0.00149412 -0.0127" rpy="0 0 0"/>
+<mass value="1.19025" />
+<inertia ixx="0.00179759" ixy="0"  ixz="0" iyy="0.00189058" iyz="0" izz="0.00356019" />
+</inertial>
+</link>
+
+<joint name="wheelRightFront_speed" type="revolute">
+<origin xyz="0.346811 0.0750801 -0.0130443" rpy="-1.5708 -0 -1.5708" />
+<parent link="robot_body" />
+<child link="wheel_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="wheel_3">
+<visual>
+<origin xyz="0 0 0" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.3493e-19 -0.00149412 0.0127" rpy="0 0 0"/>
+<mass value="1.19025" />
+<inertia ixx="0.00179759" ixy="0"  ixz="0" iyy="0.00189058" iyz="0" izz="0.00356019" />
+</inertial>
+</link>
+
+<joint name="wheelLeftFront_speed" type="revolute">
+<origin xyz="-0.368589 0.0750801 -0.0130443" rpy="-3.14159 -1.5708 0" />
+<parent link="robot_body" />
+<child link="wheel_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="wheel_4">
+<visual>
+<origin xyz="0 -3.46945e-18 0" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -3.46945e-18 0" rpy="-1.5708 -0 0" />
+<geometry>
+<mesh filename="package://wheel.stl"/>
+</geometry>
+<material name="wheel_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.3493e-19 -0.00149412 0.0127" rpy="0 0 0"/>
+<mass value="1.19025" />
+<inertia ixx="0.00179759" ixy="0"  ixz="0" iyy="0.00189058" iyz="0" izz="0.00356019" />
+</inertial>
+</link>
+
+<joint name="wheelLeftBack_speed" type="revolute">
+<origin xyz="-0.368589 -0.32092 -0.0130443" rpy="-1.5708 -0 -1.5708" />
+<parent link="robot_body" />
+<child link="wheel_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+
+</robot>
