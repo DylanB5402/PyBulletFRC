@@ -19,8 +19,8 @@ while True:
     p.stepSimulation()
     time.sleep(1./240.)
     # print(p.getJointStates(bodyUniqueID, [2, 3, 1, 0]))
-    for state in p.getJointStates(bodyUniqueID, [2, 3, 1, 0]):
-        print(state[1])
+    # for state in p.getJointStates(bodyUniqueID, [2, 3, 1, 0]):
+    #     print(state[1])
 cubePos, cubeOrn = p.getBasePositionAndOrientation(robot)
 print(cubePos,cubeOrn)
 p.disconnect()
