@@ -14,8 +14,9 @@ print("------")
 bodyUniqueID = p.getBodyUniqueId(robot)
 # for i in range(0, p.getNumJoints(robot)):
 #     print(p.getJointInfo(robot, i))
-p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities = [100, 100, 100, 100])
+# p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities = [100, 100, 100, 100])
 while True:
+    p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities=[100, 100, 100, 100])
     p.stepSimulation()
     time.sleep(1./240.)
     # print(p.getJointStates(bodyUniqueID, [2, 3, 1, 0]))

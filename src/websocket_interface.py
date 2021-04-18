@@ -26,25 +26,25 @@ class WPILibWSInterface:
                         self.right_voltage = -12 * float(data['data']['<speed'])
         return (self.left_voltage, self.right_voltage)
 
-    def send_encoder_data(self, left_count, right_count):
-        # self.ws.send()
-        left_encoder_data = {'data' :  {'>count' : left_count}, 'device': '0', 'type': 'Encoder'}
-        right_encoder_data = {'data' :  {'>count' : right_count}, 'device': '1', 'type': 'Encoder'}
-        # print(str(left_encoder_data))
-        # {'data': {'>count': 687}, 'device': '0', 'type': 'Encoder'}
-        # {'data': {'>count': 000}, 'device': '0', 'type': 'Encoder'}
-        try:
-            self.ws.send(str(left_encoder_data))
-            self.ws.send(str(right_encoder_data))
-            print("sent")
-        except ConnectionError:
-            print("Error")
-            pass
-        time.sleep(0.001)
-        pass
+    # def send_encoder_data(self, left_count, right_count):
+    #     # self.ws.send()
+    #     left_encoder_data = {'data' :  {'>count' : left_count}, 'device': '0', 'type': 'Encoder'}
+    #     right_encoder_data = {'data' :  {'>count' : right_count}, 'device': '1', 'type': 'Encoder'}
+    #     # print(str(left_encoder_data))
+    #     # {'data': {'>count': 687}, 'device': '0', 'type': 'Encoder'}
+    #     # {'data': {'>count': 000}, 'device': '0', 'type': 'Encoder'}
+    #     try:
+    #         self.ws.send(str(left_encoder_data))
+    #         self.ws.send(str(right_encoder_data))
+    #         print("sent")
+    #     except ConnectionError:
+    #         print("Error")
+    #         pass
+    #     time.sleep(0.001)
+    #     pass
 
 interface = WPILibWSInterface()
-while(True):
+# while(True):
     # print(interface.get_voltage())
-    interface.get_voltage()
-    interface.send_encoder_data(1000, 1000)
+interface.get_voltage()
+    # interface.send_encoder_data(1000, 1000)
