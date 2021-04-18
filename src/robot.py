@@ -1,6 +1,7 @@
 import pybullet as p
 import time
 import pybullet_data
+from one_way_ws_interface import OneWayWPILibWSInterfaceApp
 
 physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath()) #optionally
@@ -9,14 +10,22 @@ planeId = p.loadURDF("assets/plane.urdf")
 startPos = [0,0,1]
 startOrientation = p.getQuaternionFromEuler([0,0,0])
 robot = p.loadURDF("assets/my-robot/robot.urdf", startPos, startOrientation)
-print("------")
+# print("------")
+wheel_rad = 0.0762
 # print(p.getBodyUniqueId(robot))
 bodyUniqueID = p.getBodyUniqueId(robot)
 # for i in range(0, p.getNumJoints(robot)):
 #     print(p.getJointInfo(robot, i))
 # p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities = [100, 100, 100, 100])
+
+interface = OneWayWPILibWSInterfaceApp()
+
 while True:
-    p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities=[100, 100, 100, 100])
+    leftVel, rightVel = interface.get_velocity()
+    leftVel = leftVel / wheel_rad
+    rightVel = rightVel / wheel_rad
+    print(leftVel, rightVel)
+    p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities=[leftVel, leftVel, rightVel, rightVel])
     p.stepSimulation()
     time.sleep(1./240.)
     # print(p.getJointStates(bodyUniqueID, [2, 3, 1, 0]))
