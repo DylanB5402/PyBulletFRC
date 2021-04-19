@@ -3,6 +3,7 @@ import time
 import pybullet_data
 from src.interfaces.one_way_ws_interface import OneWayWPILibWSInterfaceApp
 
+
 def run_sim():
     physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
     p.setAdditionalSearchPath(pybullet_data.getDataPath()) #optionally
@@ -19,15 +20,14 @@ def run_sim():
     #     print(p.getJointInfo(robot, i))
     # p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities = [100, 100, 100, 100])
 
-    interface = OneWayWPILibWSInterfaceApp()
+    # interface = OneWayWPILibWSInterfaceApp()
     # leftVel = 0
     # rightVel = 0
-    # p.setTimeStep()
     while True:
-        leftVel, rightVel = interface.get_velocity()
+        # leftVel, rightVel = interface.get_velocity()
         leftVel = leftVel / wheel_rad
         rightVel = rightVel / wheel_rad
-        # print(leftVel, rightVel)
+        print(leftVel, rightVel)
         p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities=[leftVel, leftVel, rightVel, rightVel])
         p.stepSimulation()
         time.sleep(1./240.)

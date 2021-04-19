@@ -36,12 +36,13 @@ async def go():
 # while True:
 #     print(687)
 
-async def taco():
-    print(687)
+# async def taco():
+#     print(687)
+#
+# async def potato():
+#     await taco()
+#     print(1678)
 
-async def potato():
-    await taco()
-    print(1678)
+# asyncio.run(potato())
 
-asyncio.run(potato())
 
