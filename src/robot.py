@@ -1,7 +1,7 @@
 import pybullet as p
 import time
 import pybullet_data
-from one_way_ws_interface import OneWayWPILibWSInterfaceApp
+from src.interfaces.one_way_ws_interface import OneWayWPILibWSInterfaceApp
 
 physicsClient = p.connect(p.GUI)#or p.DIRECT for non-graphical version
 p.setAdditionalSearchPath(pybullet_data.getDataPath()) #optionally
