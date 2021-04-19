@@ -23,13 +23,17 @@ class OneWayWPILibWSInterfaceApp:
             # print(data)
             if (data['device'] == 'DriveData'):
                 if ('>left_vel_mps' in data['data']):
-                    self.left_velocity = float(data['data']['>left_vel_mps'])
+                    self.left_velocity = -float(data['data']['>left_vel_mps'])
                     vel_left_acquired = True
                 elif ('>right_vel_mps' in data['data']):
-                    self.right_velocity = float(data['data']['>right_vel_mps'])
+                    self.right_velocity = -float(data['data']['>right_vel_mps'])
                     vel_right_acquired = True
         return (self.left_velocity, self.right_velocity)
 
 # inter = OneWayWPILibWSInterfaceApp()
 # while True:
-#     print(inter.get_velocity())
+#     # print(time.time_ns())
+#     startTime = time.time()
+#     inter.get_velocity()
+#     # print(inter.get_velocity())
+#     print ((time.time() - startTime))

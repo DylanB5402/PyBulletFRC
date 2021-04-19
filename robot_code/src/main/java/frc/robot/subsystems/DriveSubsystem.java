@@ -97,9 +97,9 @@ public class DriveSubsystem extends SubsystemBase {
               VecBuilder.fill(0, 0, 0.0001, 0.1, 0.1, 0.005, 0.005));
 
       // The encoder and gyro angle sims let us set simulated sensor readings
-      m_leftEncoderSim = new EncoderSim(m_leftEncoder);
-      m_rightEncoderSim = new EncoderSim(m_rightEncoder);
-      m_gyroSim = new ADXRS450_GyroSim(m_gyro);
+      // m_leftEncoderSim = new EncoderSim(m_leftEncoder);
+      // m_rightEncoderSim = new EncoderSim(m_rightEncoder);
+      // m_gyroSim = new ADXRS450_GyroSim(m_gyro);
 
       // the Field2d class lets us visualize our robot in the simulation GUI.
       m_fieldSim = new Field2d();
@@ -136,11 +136,11 @@ public class DriveSubsystem extends SubsystemBase {
         
     m_drivetrainSimulator.update(0.020);
 
-    m_leftEncoderSim.setDistance(m_drivetrainSimulator.getLeftPositionMeters());
-    m_leftEncoderSim.setRate(m_drivetrainSimulator.getLeftVelocityMetersPerSecond());
-    m_rightEncoderSim.setDistance(m_drivetrainSimulator.getRightPositionMeters());
-    m_rightEncoderSim.setRate(m_drivetrainSimulator.getRightVelocityMetersPerSecond());
-    m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
+    // m_leftEncoderSim.setDistance(m_drivetrainSimulator.getLeftPositionMeters());
+    // m_leftEncoderSim.setRate(m_drivetrainSimulator.getLeftVelocityMetersPerSecond());
+    // m_rightEncoderSim.setDistance(m_drivetrainSimulator.getRightPositionMeters());
+    // m_rightEncoderSim.setRate(m_drivetrainSimulator.getRightVelocityMetersPerSecond());
+    // m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
     SmartDashboard.putNumber("left vel", m_drivetrainSimulator.getLeftVelocityMetersPerSecond() / Constants.DriveConstants.kWheelRadiusMeters);
     SmartDashboard.putNumber("right vel", m_drivetrainSimulator.getRightVelocityMetersPerSecond() / Constants.DriveConstants.kWheelRadiusMeters);
     // s.createDouble("TestData", Direction.kOutput, m_drivetrainSimulator.getHeading().getDegrees());

@@ -22,15 +22,18 @@ def run_sim():
     interface = OneWayWPILibWSInterfaceApp()
     # leftVel = 0
     # rightVel = 0
-    # p.setTimeStep()
+    timeStep = 0.015
+    p.setTimeStep(timeStep)
     while True:
+        startTime = time.time()
         leftVel, rightVel = interface.get_velocity()
         leftVel = leftVel / wheel_rad
         rightVel = rightVel / wheel_rad
         # print(leftVel, rightVel)
         p.setJointMotorControlArray(bodyUniqueID, [2, 3, 1, 0], p.VELOCITY_CONTROL, targetVelocities=[leftVel, leftVel, rightVel, rightVel])
         p.stepSimulation()
-        time.sleep(1./240.)
+        print(time.time() - startTime)
+        time.sleep(timeStep)
         # print(p.getJointStates(bodyUniqueID, [2, 3, 1, 0]))
         # for state in p.getJointStates(bodyUniqueID, [2, 3, 1, 0]):
         #     print(state[1])
